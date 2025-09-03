@@ -16,8 +16,10 @@ def main():
     defeated_goblins = 0
 
     # Battle Loop 
+    round = 0
     while hero.is_alive() and any(goblin.is_alive() for goblin in goblins):
-        print("\nNew Round!")
+        print("\nNew Round!") 
+        round = round + 1
         
         # Hero's turn to attack
         target_goblin = random.choice([goblin for goblin in goblins if goblin.is_alive()])
@@ -45,6 +47,11 @@ def main():
 
     # Final tally of goblins defeated
     print(f"\nTotal goblins defeated: {defeated_goblins} / {len(goblins)}")
+    
+    # Battle Summary
+    print(f"\nBattle Summary: ")
+    print(f"\nTotal Damage: {damage}")
+    print(f"\nRounds Survived: {round}")
 
 if __name__ == "__main__":
     main()
