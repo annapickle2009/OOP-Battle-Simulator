@@ -1,6 +1,7 @@
 import random
 from goblin import Goblin
 from hero import Hero
+from witch import Witch
 
 def main():
     print("Welcome to the Battle Arena!")
@@ -10,7 +11,7 @@ def main():
     hero = Hero("Aragorn")
 
     # Create goblins ༼ ºل͟º ༽ ༼ ºل͟º ༽ ༼ ºل͟º ༽
-    goblins = [Goblin(f"Goblin {i+1}") for i in range(3)]
+    goblins = [Goblin(f"Goblin {i+1}", "green") for i in range(3)]
 
     # Keep track of how many goblins were defeated
     defeated_goblins = 0
@@ -18,6 +19,7 @@ def main():
     # Total damage
     hero_damage = 0
     goblin_damage = 0
+    witch_damage = 0
 
     # Tracking rounds
     round = 0
@@ -49,7 +51,16 @@ def main():
 
     # Determine outcome
     if hero.is_alive():
-        print(f"\nThe hero has defeated all the goblins! ༼ ᕤ◕◡◕ ༽ᕤ")
+        print("BOSSS TIME!!!")
+        witch = Witch("mrs.wright")
+        while hero.is_alive() and witch.is_alive():
+            damage = hero.strike()
+            witch.take_damage(damage)
+
+            damage = witch.attack()
+            hero.receive_damage(damage)
+    if hero.is_alive():
+        print(f"\nThe hero has defeated the boss! ༼ ᕤ◕◡◕ ༽ᕤ")
     else:
         print(f"\nThe hero has been defeated. Game Over. (｡•́︿•̀｡)")
 
