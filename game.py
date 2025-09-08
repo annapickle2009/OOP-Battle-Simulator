@@ -1,3 +1,4 @@
+print("New Branch")
 import random
 from goblin import Goblin
 from hero import Hero
